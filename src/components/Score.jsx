@@ -76,8 +76,7 @@ const Score = (props) => {
       <div styles={styles.textsContainer}>
         <h6 style={styles.h6}>Your Readiness Score</h6>
         <p style={styles.p}>
-          Improve your job readiness score by assessing your technical skills
-          below.
+          Improve your job readiness score by assessing your technical skills 👇
         </p>
       </div>
     </div>
@@ -90,7 +89,7 @@ const styles = {
   container: {
     // border: "1px solid var(--color-third)",
     borderRadius: "15px",
-    marginBottom: "2rem",
+    marginBottom: "1rem",
     padding: "1rem",
   },
   doughnutContainer: {
@@ -111,6 +110,7 @@ const styles = {
   p: {
     fontSize: "18px",
     textAlign: "center",
+    width: "100%",
     padding: "0",
     margin: "0",
     fontWeight: "100",

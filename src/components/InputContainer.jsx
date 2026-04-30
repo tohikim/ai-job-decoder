@@ -7,7 +7,7 @@ const InputContainer = (props) => {
     props.setLoading(true);
 
     try {
-      if (!props.jobDescription) {
+      if (props.jobDescription.length < 30) {
         alert("Please enter a job description");
 
         return;

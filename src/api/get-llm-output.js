@@ -1,13 +1,13 @@
 import axios from "axios";
-import mockResult from "../__mocks__/llm-result.json";
-import { delay } from "../utils/delay";
+// import mockResult from "../__mocks__/llm-result.json";
+// import { delay } from "../utils/delay";
 
 export const getLlmOutput = async (jobDescription) => {
-  if (import.meta.env.VITE_DEBUG === "1" && jobDescription.length < 5) {
-    await delay(2000);
+  // if (import.meta.env.VITE_DEBUG === "1" && jobDescription.length < 5) {
+  //   await delay(2000);
 
-    return mockResult;
-  }
+  //   return mockResult;
+  // }
 
   const response = await axios.post(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${import.meta.env.VITE_LLM_API_KEY}`,
