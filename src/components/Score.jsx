@@ -97,7 +97,10 @@ const styles = {
     position: "relative",
     padding: "2rem 0 0 0",
   },
-  textsContainer: { alignSelf: "center", textAlign: "center" },
+  textsContainer: {
+    alignSelf: "center",
+    textAlign: "center",
+  },
   h6: {
     fontSize: "18px",
     paddingBottom: "0.7rem",

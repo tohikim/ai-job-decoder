@@ -24,9 +24,9 @@ function Result(props) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         // const entry = entries[0];
-        if (entry.intersectionRatio > 0.2) {
+        if (entry.intersectionRatio > 0.1) {
           setIsVisible(true);
-        } else if (entry.intersectionRatio <= 0.2) {
+        } else if (entry.intersectionRatio <= 0.1) {
           setIsVisible(false);
         }
 
