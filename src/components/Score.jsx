@@ -1,11 +1,23 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { BiBorderRadius } from "react-icons/bi";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Score = (props) => {
-  const percentage = `${Math.round((props.currentScore / props.totalScore) * 100)}%`;
+  const completed = Math.round((props.currentScore / props.totalScore) * 100);
+  const percentage = `${completed}%`;
+
+  let bgcolor = {};
+
+  if (completed < 40) {
+    bgcolor = "#FAC7BE";
+  } else if (completed < 70) {
+    bgcolor = "#F8D87C";
+  } else if (completed < 99) {
+    bgcolor = "#B7DFBA";
+  } else if (completed === 100) {
+    bgcolor = "#002e57";
+  }
 
   return (
     <div style={styles.container}>
@@ -18,7 +30,7 @@ const Score = (props) => {
                   props.currentScore,
                   props.totalScore - props.currentScore,
                 ],
-                backgroundColor: ["#002e57", "#002e5725"],
+                backgroundColor: [bgcolor, "#f0efef"],
                 circumference: 180,
                 borderWidth: 0,
                 rotation: 270,

@@ -58,13 +58,13 @@ const Skill = (props) => {
       key={props.skill.label}
       style={{
         ...styles.container,
-        borderColor: skillStatuses[statusIndex].borderColor,
+        borderColor: "var(--color-third)",
       }}
     >
       <div
         style={{
           ...styles.topSection,
-          borderBottom: `1px solid ${skillStatuses[statusIndex].borderColor}`,
+          borderBottom: `1px solid var(--color-third)`,
           backgroundColor: skillStatuses[statusIndex].background,
         }}
       >
