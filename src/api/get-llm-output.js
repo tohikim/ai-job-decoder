@@ -1,6 +1,7 @@
 import axios from "axios";
 import { delay } from "../utils/delay";
 import { MINIMUM_JOB_DESCRIPTION_CHARACTERS } from "../constants/job-description";
+import mockResult from "../__mocks__/llm-result.json";
 
 export const getLlmOutput = async (jobDescription) => {
   if (

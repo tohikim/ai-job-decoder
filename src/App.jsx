@@ -1,7 +1,7 @@
-import "./App.css";
 import { useState } from "react";
 import Home from "./routes/Home";
 import Result from "./routes/Result";
+import "./index.css";
 
 const routes = {
   home: Home,
