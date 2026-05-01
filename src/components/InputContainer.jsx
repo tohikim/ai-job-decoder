@@ -1,5 +1,6 @@
 import { getLlmOutput } from "../api/get-llm-output";
 import arrow from "../assets/arrow.png";
+import { MINIMUM_JOB_DESCRIPTION_CHARACTERS } from "../constants/job-description";
 
 const InputContainer = (props) => {
   const onSubmit = async (e) => {
@@ -7,7 +8,10 @@ const InputContainer = (props) => {
     props.setLoading(true);
 
     try {
-      if (props.jobDescription.length < 30) {
+      if (
+        import.meta.env.DEVELOPMENT === "production" &&
+        props.jobDescription.length < MINIMUM_JOB_DESCRIPTION_CHARACTERS
+      ) {
         alert("Please enter a job description");
 
         return;
