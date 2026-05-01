@@ -1,7 +1,7 @@
 const TitleContainer = () => {
   return (
     <div style={styles.container}>
-      <h4 style={styles.title}>Kill your imposter syndrome</h4>
+      <h4 style={styles.title}>Kill your impostor syndrome</h4>
       <div style={styles.tag}>
         <p style={styles.text}>Honest job decoder</p>
         <p style={styles.text}>Skill assessment</p>
