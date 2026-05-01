@@ -4,7 +4,7 @@ import { MINIMUM_JOB_DESCRIPTION_CHARACTERS } from "../constants/job-description
 
 export const getLlmOutput = async (jobDescription) => {
   if (
-    import.meta.env.DEVELOPMENT !== "production" &&
+    import.meta.env.VITE_ENVIRONMENT !== "production" &&
     jobDescription.length < MINIMUM_JOB_DESCRIPTION_CHARACTERS
   ) {
     await delay(2000);

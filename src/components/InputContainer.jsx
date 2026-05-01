@@ -9,7 +9,7 @@ const InputContainer = (props) => {
 
     try {
       if (
-        import.meta.env.DEVELOPMENT === "production" &&
+        import.meta.env.VITE_ENVIRONMENT === "production" &&
         props.jobDescription.length < MINIMUM_JOB_DESCRIPTION_CHARACTERS
       ) {
         alert("Please enter a job description");
