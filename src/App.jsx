@@ -16,7 +16,7 @@ function App() {
   const Route = routes[route];
 
   return (
-    <div style={styles.container}>
+    <div>
       <Route
         setRoute={setRoute}
         jobDescription={jobDescription}
@@ -27,12 +27,5 @@ function App() {
     </div>
   );
 }
-
-const styles = {
-  container: {
-    height: "100dvh",
-    width: "100dvw",
-  },
-};
 
 export default App;

@@ -33,6 +33,7 @@ const styles = {
     height: "fit-content",
     verticalAlign: "top",
     padding: "1rem",
+    maxHeight: "10dvh",
   },
   restartContainer: {
     alignItems: "left",

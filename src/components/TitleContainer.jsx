@@ -14,13 +14,10 @@ const styles = {
   container: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
-    alignSelf: "center",
     alignItems: "center",
     gap: "20px",
-    paddingTop: "2rem",
+    paddingTop: "4rem",
     paddingBotton: "2rem",
-    height: "25vh",
   },
   title: {
     fontSize: "1.4rem",

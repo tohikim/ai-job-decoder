@@ -52,6 +52,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    height: "86dvh",
   },
   section: {
     display: "flex",
