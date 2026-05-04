@@ -18,12 +18,7 @@ const ProgressBar = (props) => {
 
   return (
     <div {...stylex.props(styles.container)}>
-      <div
-        {...stylex.props(styles.filler, {
-          width: `${completed}%`,
-          backgroundColor: bgcolor,
-        })}
-      ></div>
+      <div {...stylex.props(styles.filler(completed, bgcolor))}></div>
     </div>
   );
 };
@@ -36,12 +31,13 @@ const styles = stylex.create({
     margin: "1rem",
     backgroundColor: tokens["--color-third"],
   },
-  filler: {
+  filler: (completed, bgcolor) => ({
     height: "100%",
-
     borderRadius: "inherit",
     textAlign: "right",
-  },
+    width: `${completed}%`,
+    backgroundColor: bgcolor,
+  }),
 });
 
 export default ProgressBar;
