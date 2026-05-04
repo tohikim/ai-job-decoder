@@ -1,10 +1,11 @@
+import * as stylex from "@stylexjs/unplugin";
 import { useEffect, useState } from "react";
 
 const defaultHeight = "100";
 
 const ToggleButton = ({ isExpanded, onClick }) => {
   return (
-    <button style={styles.btnToggle} onClick={onClick}>
+    <button {...props.stylex(styles.btnToggle)} onClick={onClick}>
       {isExpanded ? "Show less" : "Show more"}
     </button>
   );
@@ -36,13 +37,11 @@ const HonestDecoder = (props) => {
   };
 
   return (
-    <div style={styles.singleColumnDiv}>
-      <h4 style={styles.h4}>{props.llmResult.decoder.roleTitle}</h4>
-      {/* <h6 style={styles.h6}>The Real Role</h6> */}
+    <div {...props.stylex(styles.singleColumnDiv)}>
+      <h4 {...props.stylex(styles.h4)}>{props.llmResult.decoder.roleTitle}</h4>
       <div
         className={`${isExpanded ? "expanded" : "collapsed"} text-display`}
-        style={{
-          ...styles.textDisplay,
+        {...props.stylex(styles.textDisplay, {
           height: `${heightCurrent}px`,
           animation: isExpanded
             ? "mask-expanding 0.5s"
@@ -50,7 +49,7 @@ const HonestDecoder = (props) => {
           maskImage: isExpanded
             ? "linear-gradient(black 100%, transparent)"
             : "linear-gradient(black 50%, transparent)",
-        }}
+        })}
       >
         {text}
       </div>
@@ -61,7 +60,7 @@ const HonestDecoder = (props) => {
   );
 };
 
-export const styles = {
+const styles = stylex.create({
   singleColumnDiv: {
     gap: "1rem",
     textAlign: "left",
@@ -127,6 +126,6 @@ export const styles = {
     overflow: "hidden",
     transition: "height 0.5s ease-in-out",
   },
-};
+});
 
 export default HonestDecoder;

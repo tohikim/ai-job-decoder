@@ -1,3 +1,4 @@
+import * as stylex from "@stylexjs/unplugin";
 import { getLlmOutput } from "../api/get-llm-output";
 import arrow from "../assets/arrow.png";
 import { MINIMUM_JOB_DESCRIPTION_CHARACTERS } from "../constants/job-description";
@@ -35,24 +36,28 @@ const InputContainer = (props) => {
   };
 
   return (
-    <div style={styles.container}>
+    <div {...props.stylex(styles.container)}>
       <form onSubmit={onSubmit}>
         <textarea
           placeholder="Paste job description here."
           value={props.jobDescription}
           rows={1}
-          style={styles.textarea}
+          {...props.stylex(styles.textarea)}
           onChange={(e) => props.setJobDescription(e.target.value)}
         />
-        <button type={"submit"} variant="contained" style={styles.button}>
-          <img alt="arrow" src={arrow} style={styles.arrow} />
+        <button
+          type={"submit"}
+          variant="contained"
+          {...props.stylex(styles.button)}
+        >
+          <img alt="arrow" src={arrow} {...props.stylex(styles.arrow)} />
         </button>
       </form>
     </div>
   );
 };
 
-const styles = {
+const styles = stylex.create({
   container: {
     boxShadow: "0 0 20px var(--color-third), 0 0 40px var(--color-third)",
     borderRadius: "25px",
@@ -85,6 +90,6 @@ const styles = {
     width: "16px",
     height: "21x",
   },
-};
+});
 
 export default InputContainer;

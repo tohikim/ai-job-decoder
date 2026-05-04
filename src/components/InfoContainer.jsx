@@ -1,10 +1,11 @@
+import * as stylex from "@stylexjs/unplugin";
 import infomark from "../assets/info-mark.png";
 
 const InfoContainer = () => {
   return (
-    <div style={styles.container}>
-      <img alt="info mark" src={infomark} style={styles.icon} />
-      <p style={styles.text}>
+    <div {...props.stylex(styles.container)}>
+      <img alt="info mark" src={infomark} {...props.stylex(styles.icon)} />
+      <p {...props.stylex(styles.text)}>
         We translate complex JDs into simple skill checklists so you can apply
         with confidence.
       </p>
@@ -12,7 +13,7 @@ const InfoContainer = () => {
   );
 };
 
-const styles = {
+const styles = stylex.create({
   container: {
     display: "flex",
     flexDirection: "row",
@@ -38,6 +39,6 @@ const styles = {
     textAlign: "left",
     lineHeight: "1.4rem",
   },
-};
+});
 
 export default InfoContainer;

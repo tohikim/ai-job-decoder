@@ -6,6 +6,7 @@ import Skill from "../components/Skill.jsx";
 import { mapStateToCurrentScore } from "../utils/map-state-to-current-score";
 import { formatArrayToTargetObject } from "../utils/format-array-to-target-object";
 import ProgressBar from "../components/ProgressBar.jsx";
+import * as stylex from "@stylexjs/unplugin";
 
 function Result(props) {
   const [currentScoreTracker, setCurrentScoreTracker] = useState(
@@ -50,7 +51,7 @@ function Result(props) {
         enableRestart
         enableShare
       />
-      <div style={styles.container}>
+      <div {...props.stylex(styles.container)}>
         <HonestDecoder llmResult={props.llmResult} />
         <Score currentScore={currentScore} totalScore={totalScore} />
 
@@ -70,15 +71,14 @@ function Result(props) {
           })}
         </div>
         {isVisible && (
-          <div style={styles.floatingProgress}>
-            <p style={styles.p}>Readiness</p>
+          <div {...props.stylex(styles.floatingProgress)}>
+            <p {...props.stylex(styles.p)}>Readiness</p>
             <ProgressBar completed={percentage} />
             <p
-              style={{
-                ...styles.p,
+              {...props.stylex(styles.p, {
                 color: "var(--color-navy)",
                 fontWeight: "600",
-              }}
+              })}
             >
               {percentage}%
             </p>
@@ -89,7 +89,7 @@ function Result(props) {
   );
 }
 
-const styles = {
+const styles = stylex.create({
   container: {
     display: "flex",
     flexDirection: "column",
@@ -118,6 +118,6 @@ const styles = {
     margin: 0,
     padding: 0,
   },
-};
+});
 
 export default Result;

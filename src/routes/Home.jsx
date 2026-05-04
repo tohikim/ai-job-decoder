@@ -5,6 +5,7 @@ import InfoContainer from "../components/InfoContainer.jsx";
 import { Mirage } from "ldrs/react";
 import "ldrs/react/Mirage.css";
 import { useState } from "react";
+import * as stylex from "@stylexjs/unplugin";
 
 function Home(props) {
   const [loading, setLoading] = useState(false);
@@ -18,19 +19,19 @@ function Home(props) {
         enableShare={false}
       />
       {loading ? (
-        <div style={styles.loading}>
+        <div {...props.stylex(styles.loading)}>
           <Mirage
             size="60"
             speed="2.5"
             color="var(--color-navy)"
             position="relative"
           />
-          <p style={styles.p}>We're loading your result...</p>
+          <p {...props.stylex(styles.p)}>We're loading your result...</p>
         </div>
       ) : (
-        <div style={styles.content}>
+        <div {...props.stylex(styles.content)}>
           <TitleContainer />
-          <div style={styles.section}>
+          <div {...props.stylex(styles.section)}>
             <InfoContainer />
             <InputContainer
               setRoute={props.setRoute}
@@ -47,7 +48,7 @@ function Home(props) {
   );
 }
 
-const styles = {
+const styles = stylex.create({
   content: {
     display: "flex",
     flexDirection: "column",
@@ -70,6 +71,6 @@ const styles = {
     fontWeight: "100",
     paddingTop: "1rem",
   },
-};
+});
 
 export default Home;

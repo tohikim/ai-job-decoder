@@ -1,3 +1,4 @@
+import * as stylex from "@stylexjs/unplugin";
 import reloadicon from "../assets/reload.png";
 import Sharebutton from "./Sharebutton";
 
@@ -9,23 +10,23 @@ const Header = (props) => {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.restartContainer}>
+    <div {...props.stylex(styles.container)}>
+      <div {...props.stylex(styles.restartContainer)}>
         {props.enableRestart && (
-          <button onClick={handleClick} style={styles.button}>
-            <img src={reloadicon} style={styles.icon} />
+          <button onClick={handleClick} {...props.stylex(styles.button)}>
+            <img src={reloadicon} {...props.stylex(styles.icon)} />
           </button>
         )}
       </div>
-      <p style={styles.modelName}>ISK 1.0</p>
-      <div style={styles.iconContainer}>
+      <p {...props.stylex(styles.modelName)}>ISK 1.0</p>
+      <div {...props.stylex(styles.iconContainer)}>
         {props.enableShare && <Sharebutton />}
       </div>
     </div>
   );
 };
 
-const styles = {
+const styles = stylex.create({
   container: {
     display: "flex",
     flexDirection: "row",
@@ -51,6 +52,6 @@ const styles = {
   },
   iconContainer: { alignItems: "right" },
   icon: { height: 70, width: 70, margin: 0, padding: 0 },
-};
+});
 
 export default Header;

@@ -2,6 +2,7 @@ import youtube from "../assets/youtube.png";
 import { useEffect, useState } from "react";
 import { skillStatuses } from "../constants/skill-statuses";
 import { formatArrayToTargetObject } from "../utils/format-array-to-target-object";
+import * as stylex from "@stylexjs/unplugin";
 
 const Skill = (props) => {
   const [statusIndex, setStatusIndex] = useState(0);
@@ -56,23 +57,19 @@ const Skill = (props) => {
   return (
     <div
       key={props.skill.label}
-      style={{
-        ...styles.container,
-        borderColor: "var(--color-third)",
-      }}
+      {...props.stylex(styles.container, { borderColor: "var(--color-third)" })}
     >
       <div
-        style={{
-          ...styles.topSection,
+        {...props.stylex(styles.topSection, {
           borderBottom: `1px solid var(--color-third)`,
           backgroundColor: skillStatuses[statusIndex].background,
-        }}
+        })}
       >
-        <h6 style={styles.h6}>{props.skill.label}</h6>
+        <h6 {...props.stylex(styles.h6)}>{props.skill.label}</h6>
         <form>
           <select
             value={statusIndex}
-            style={styles.statusIndex}
+            {...props.stylex(styles.statusIndex)}
             onChange={(e) => {
               e.preventDefault();
               setStatusIndex(+e.target.value);
@@ -86,7 +83,7 @@ const Skill = (props) => {
                   disabled={isDefault}
                   defaultValue={isDefault}
                   value={index}
-                  style={styles.option}
+                  {...props.stylex(styles.option)}
                 >
                   {status.label}
                 </option>
@@ -95,7 +92,7 @@ const Skill = (props) => {
           </select>
         </form>
       </div>
-      <div style={styles.skillDiv}>
+      <div {...props.stylex(styles.skillDiv)}>
         {props.skill.actionItems.map((item) => {
           // const lastIndex = index === props.skill.actionItems.length - 1;
           const isChecked = checked[item];
@@ -106,14 +103,12 @@ const Skill = (props) => {
           return (
             <div
               key={item}
-              style={{
-                ...styles.section,
+              {...props.stylex(styles.section, {
                 color: isChecked
                   ? "var(--color-third)"
                   : "var(--color-secondary)",
                 borderBottom: 0,
-                // lastIndex ? 0 : `1px solid var(--color-third)`,
-              }}
+              })}
             >
               <input
                 className={isChecked ? "checked" : ""}
@@ -138,15 +133,14 @@ const Skill = (props) => {
                     };
                   });
                 }}
-                style={{
-                  ...styles.inputValue,
+                {...props.stylex(styles.inputValue, {
                   textDecoration: isChecked
                     ? "line-through var(--color-third)"
                     : undefined,
                   color: isChecked
                     ? "var(--color-third)"
                     : "var(--color-secondary)",
-                }}
+                })}
               >
                 {item}
               </button>
@@ -160,10 +154,9 @@ const Skill = (props) => {
                 <img
                   alt="Youtube link"
                   src={youtube}
-                  style={{
-                    ...styles.img,
+                  {...props.stylex(styles.img, {
                     opacity: isChecked ? 0.2 : 0.7,
-                  }}
+                  })}
                 />
               </button>
             </div>
@@ -174,7 +167,7 @@ const Skill = (props) => {
   );
 };
 
-const styles = {
+const styles = stylex.create({
   container: {
     marginBottom: 28,
     width: "100%",
@@ -240,6 +233,6 @@ const styles = {
     fontSize: "18px",
     paddingRight: "1rem",
   },
-};
+});
 
 export default Skill;

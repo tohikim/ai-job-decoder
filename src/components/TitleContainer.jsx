@@ -1,16 +1,18 @@
+import * as stylex from "@stylexjs/unplugin";
+
 const TitleContainer = () => {
   return (
-    <div style={styles.container}>
-      <h4 style={styles.title}>Kill your impostor syndrome</h4>
-      <div style={styles.tag}>
-        <p style={styles.text}>Honest job decoder</p>
-        <p style={styles.text}>Skill assessment</p>
+    <div {...props.stylex(styles.container)}>
+      <h4 {...props.stylex(styles.title)}>Kill your impostor syndrome</h4>
+      <div {...props.stylex(styles.tag)}>
+        <p {...props.stylex(styles.text)}>Honest job decoder</p>
+        <p {...props.stylex(styles.text)}>Skill assessment</p>
       </div>
     </div>
   );
 };
 
-const styles = {
+const styles = stylex.create({
   container: {
     display: "flex",
     flexDirection: "column",
@@ -43,6 +45,6 @@ const styles = {
     paddingRight: "1rem",
     paddingLeft: "1rem",
   },
-};
+});
 
 export default TitleContainer;
