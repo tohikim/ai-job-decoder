@@ -1,13 +1,8 @@
+import * as stylex from "@stylexjs/stylex";
+import { tokens } from "../tokens.stylex";
+
 const ProgressBar = (props) => {
   const { completed } = props;
-
-  const containerStyles = {
-    height: 20,
-    width: "100%",
-    backgroundColor: "var(--color-third)",
-    borderRadius: 50,
-    margin: "1rem",
-  };
 
   let bgcolor = {};
 
@@ -18,22 +13,31 @@ const ProgressBar = (props) => {
   } else if (completed < 99) {
     bgcolor = "#B7DFBA";
   } else {
-    bgcolor = "var(--color-navy)";
+    bgcolor = tokens["--color-navy"];
   }
 
-  const fillerStyles = {
-    height: "100%",
-    width: `${completed}%`,
-    backgroundColor: bgcolor,
-    borderRadius: "inherit",
-    textAlign: "right",
-  };
-
   return (
-    <div style={containerStyles}>
-      <div style={fillerStyles}></div>
+    <div {...stylex.props(styles.container)}>
+      <div {...stylex.props(styles.filler(completed, bgcolor))}></div>
     </div>
   );
 };
+
+const styles = stylex.create({
+  container: {
+    height: 20,
+    width: "100%",
+    borderRadius: 50,
+    margin: "1rem",
+    backgroundColor: tokens["--color-third"],
+  },
+  filler: (completed, bgcolor) => ({
+    height: "100%",
+    borderRadius: "inherit",
+    textAlign: "right",
+    width: `${completed}%`,
+    backgroundColor: bgcolor,
+  }),
+});
 
 export default ProgressBar;

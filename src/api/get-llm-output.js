@@ -1,13 +1,14 @@
 import axios from "axios";
 import { delay } from "../utils/delay";
 import { MINIMUM_JOB_DESCRIPTION_CHARACTERS } from "../constants/job-description";
+import mockResult from "../__mocks__/llm-result.json";
 
 export const getLlmOutput = async (jobDescription) => {
   if (
     import.meta.env.VITE_ENVIRONMENT !== "production" &&
     jobDescription.length < MINIMUM_JOB_DESCRIPTION_CHARACTERS
   ) {
-    await delay(2000);
+    await delay(750);
 
     return mockResult;
   }

@@ -2,6 +2,8 @@ import youtube from "../assets/youtube.png";
 import { useEffect, useState } from "react";
 import { skillStatuses } from "../constants/skill-statuses";
 import { formatArrayToTargetObject } from "../utils/format-array-to-target-object";
+import * as stylex from "@stylexjs/stylex";
+import { tokens } from "../tokens.stylex";
 
 const Skill = (props) => {
   const [statusIndex, setStatusIndex] = useState(0);
@@ -54,25 +56,13 @@ const Skill = (props) => {
   }, [checked]);
 
   return (
-    <div
-      key={props.skill.label}
-      style={{
-        ...styles.container,
-        borderColor: "var(--color-third)",
-      }}
-    >
-      <div
-        style={{
-          ...styles.topSection,
-          borderBottom: `1px solid var(--color-third)`,
-          backgroundColor: skillStatuses[statusIndex].background,
-        }}
-      >
-        <h6 style={styles.h6}>{props.skill.label}</h6>
+    <div key={props.skill.label} {...stylex.props(styles.container)}>
+      <div {...stylex.props(styles.topSection(statusIndex))}>
+        <h6 {...stylex.props(styles.h6)}>{props.skill.label}</h6>
         <form>
           <select
             value={statusIndex}
-            style={styles.statusIndex}
+            {...stylex.props(styles.statusIndex)}
             onChange={(e) => {
               e.preventDefault();
               setStatusIndex(+e.target.value);
@@ -86,7 +76,6 @@ const Skill = (props) => {
                   disabled={isDefault}
                   defaultValue={isDefault}
                   value={index}
-                  style={styles.option}
                 >
                   {status.label}
                 </option>
@@ -95,28 +84,16 @@ const Skill = (props) => {
           </select>
         </form>
       </div>
-      <div style={styles.skillDiv}>
+      <div {...stylex.props(styles.skillDiv)}>
         {props.skill.actionItems.map((item) => {
-          // const lastIndex = index === props.skill.actionItems.length - 1;
           const isChecked = checked[item];
           const link = () => {
             const url = "https://www.youtube.com/results?search_query=" + item;
             return window.open(url);
           };
           return (
-            <div
-              key={item}
-              style={{
-                ...styles.section,
-                color: isChecked
-                  ? "var(--color-third)"
-                  : "var(--color-secondary)",
-                borderBottom: 0,
-                // lastIndex ? 0 : `1px solid var(--color-third)`,
-              }}
-            >
+            <div key={item} {...stylex.props(styles.section(isChecked))}>
               <input
-                className={isChecked ? "checked" : ""}
                 type="checkbox"
                 value={item}
                 checked={isChecked}
@@ -128,6 +105,7 @@ const Skill = (props) => {
                     };
                   });
                 }}
+                {...stylex.props(styles.checkbox, isChecked && styles.checked)}
               />
               <button
                 onClick={() => {
@@ -138,32 +116,15 @@ const Skill = (props) => {
                     };
                   });
                 }}
-                style={{
-                  ...styles.inputValue,
-                  textDecoration: isChecked
-                    ? "line-through var(--color-third)"
-                    : undefined,
-                  color: isChecked
-                    ? "var(--color-third)"
-                    : "var(--color-secondary)",
-                }}
+                {...stylex.props(styles.inputValue(isChecked))}
               >
                 {item}
               </button>
-              <button
-                onClick={link}
-                style={{
-                  border: 0,
-                  background: "transparent",
-                }}
-              >
+              <button onClick={link} {...stylex.props(styles.button)}>
                 <img
                   alt="Youtube link"
                   src={youtube}
-                  style={{
-                    ...styles.img,
-                    opacity: isChecked ? 0.2 : 0.7,
-                  }}
+                  {...stylex.props(styles.img(isChecked))}
                 />
               </button>
             </div>
@@ -174,14 +135,16 @@ const Skill = (props) => {
   );
 };
 
-const styles = {
+const styles = stylex.create({
   container: {
     marginBottom: 28,
     width: "100%",
-    border: "1px solid",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: tokens["--color-third"],
     borderRadius: 15,
   },
-  topSection: {
+  topSection: (statusIndex) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
@@ -189,8 +152,10 @@ const styles = {
     padding: "1rem",
     borderTopLeftRadius: 14,
     borderTopRightRadius: 14,
-  },
-  section: {
+    borderBottom: `1px solid ${tokens["--color-third"]}`,
+    backgroundColor: skillStatuses[statusIndex].backgroundColor,
+  }),
+  section: (isChecked) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
@@ -199,8 +164,25 @@ const styles = {
     padding: "1rem",
     gap: "1rem",
     position: "relative",
+    color: isChecked ? tokens["--color-third"] : tokens["--color-secondary"],
+  }),
+  checkbox: {
+    appearance: "none",
+    width: "1.6rem",
+    height: "1.6rem",
+    padding: "0.8rem",
+    textAlign: "left",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: tokens["--color-fourth"],
+    borderRadius: "50px",
   },
-  inputValue: {
+  checked: {
+    padding: "0.8rem",
+    borderColor: tokens["--color-third"],
+    backgroundColor: tokens["--color-third"],
+  },
+  inputValue: (isChecked) => ({
     fontSize: "18px",
     textAlign: "left",
     padding: "0",
@@ -210,20 +192,23 @@ const styles = {
     marginBottom: "0.5rem",
     marginRight: "0.3rem",
     position: "relative",
-    background: "transparent",
-    border: "0",
-  },
-  img: {
+    backgroundColor: "transparent",
+    borderWidth: 0,
+    textDecoration: isChecked
+      ? `line-through ${tokens["--color-third"]}`
+      : undefined,
+    color: isChecked ? tokens["--color-third"] : tokens["--color-secondary"],
+  }),
+  img: (isChecked) => ({
     height: "15px",
     width: "15px",
     margin: 0,
     paddingTop: "0.3rem",
     alignItems: "center",
-  },
+    opacity: isChecked ? 0.2 : 0.7,
+  }),
   h6: {
     fontSize: "18px",
-    paddingBottom: "0.7rem",
-    marginBottom: "0.2rem",
     textAlign: "left",
     fontWeight: "400",
     padding: 0,
@@ -235,11 +220,15 @@ const styles = {
     textAlign: "left",
   },
   statusIndex: {
-    border: 0,
-    background: "transparent",
+    borderWidth: 0,
+    backgroundColor: "transparent",
     fontSize: "18px",
     paddingRight: "1rem",
   },
-};
+  button: {
+    borderWidth: 0,
+    backgroundColor: "transparent",
+  },
+});
 
 export default Skill;

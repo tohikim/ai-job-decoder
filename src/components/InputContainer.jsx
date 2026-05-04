@@ -1,6 +1,8 @@
+import * as stylex from "@stylexjs/stylex";
 import { getLlmOutput } from "../api/get-llm-output";
 import arrow from "../assets/arrow.png";
 import { MINIMUM_JOB_DESCRIPTION_CHARACTERS } from "../constants/job-description";
+import { tokens } from "../tokens.stylex";
 
 const InputContainer = (props) => {
   const onSubmit = async (e) => {
@@ -35,35 +37,39 @@ const InputContainer = (props) => {
   };
 
   return (
-    <div style={styles.container}>
+    <div {...stylex.props(styles.container)}>
       <form onSubmit={onSubmit}>
         <textarea
           placeholder="Paste job description here."
           value={props.jobDescription}
           rows={1}
-          style={styles.textarea}
+          {...stylex.props(styles.textarea)}
           onChange={(e) => props.setJobDescription(e.target.value)}
         />
-        <button type={"submit"} variant="contained" style={styles.button}>
-          <img alt="arrow" src={arrow} style={styles.arrow} />
+        <button
+          type={"submit"}
+          variant="contained"
+          {...stylex.props(styles.button)}
+        >
+          <img alt="arrow" src={arrow} {...stylex.props(styles.arrow)} />
         </button>
       </form>
     </div>
   );
 };
 
-const styles = {
+const styles = stylex.create({
   container: {
-    boxShadow: "0 0 20px var(--color-third), 0 0 40px var(--color-third)",
+    boxShadow: `0 0 20px ${tokens["--color-third"]}, 0 0 40px ${tokens["--color-third"]}`,
     borderRadius: "25px",
     marginBottom: "1rem",
     marginLeft: "1.25rem",
     marginRight: "1.25rem",
   },
   textarea: {
-    border: "0",
+    borderWidth: 0,
     borderRadius: "25px",
-    color: "var(--color-primary)",
+    color: tokens["--color-primary"],
     padding: "1.5rem",
     fontSize: "18px",
     fontWeight: "100",
@@ -72,8 +78,8 @@ const styles = {
   },
   button: {
     borderRadius: "50px",
-    border: 0,
-    backgroundColor: "var(--color-navy)",
+    borderWidth: 0,
+    backgroundColor: tokens["--color-navy"],
     paddingTop: "0.2rem",
     height: "45px",
     width: "45px",
@@ -85,6 +91,6 @@ const styles = {
     width: "16px",
     height: "21x",
   },
-};
+});
 
 export default InputContainer;

@@ -1,10 +1,13 @@
+import * as stylex from "@stylexjs/stylex";
 import { useEffect, useState } from "react";
+import { tokens } from "../tokens.stylex";
 
+const EXPANDABLE_SECTION_ID = "expandable-toggle";
 const defaultHeight = "100";
 
 const ToggleButton = ({ isExpanded, onClick }) => {
   return (
-    <button style={styles.btnToggle} onClick={onClick}>
+    <button {...stylex.props(styles.btnToggle)} onClick={onClick}>
       {isExpanded ? "Show less" : "Show more"}
     </button>
   );
@@ -19,9 +22,10 @@ const HonestDecoder = (props) => {
   const [isOverflow, setIsOverflow] = useState(false);
 
   useEffect(() => {
-    const element = document.querySelector(".text-display");
+    const element = document.getElementById(EXPANDABLE_SECTION_ID);
     const heightClient = element?.clientHeight || defaultHeight;
     const scrollClient = element?.scrollHeight || defaultHeight;
+
     if (heightClient !== scrollClient) {
       setIsOverflow(true);
       setHeightMax(scrollClient);
@@ -36,21 +40,11 @@ const HonestDecoder = (props) => {
   };
 
   return (
-    <div style={styles.singleColumnDiv}>
-      <h4 style={styles.h4}>{props.llmResult.decoder.roleTitle}</h4>
-      {/* <h6 style={styles.h6}>The Real Role</h6> */}
+    <div {...stylex.props(styles.singleColumnDiv)}>
+      <h4 {...stylex.props(styles.h4)}>{props.llmResult.decoder.roleTitle}</h4>
       <div
-        className={`${isExpanded ? "expanded" : "collapsed"} text-display`}
-        style={{
-          ...styles.textDisplay,
-          height: `${heightCurrent}px`,
-          animation: isExpanded
-            ? "mask-expanding 0.5s"
-            : "mask-collapsing 0.5s",
-          maskImage: isExpanded
-            ? "linear-gradient(black 100%, transparent)"
-            : "linear-gradient(black 50%, transparent)",
-        }}
+        id={EXPANDABLE_SECTION_ID}
+        {...stylex.props(styles.textDisplay(heightCurrent, isExpanded))}
       >
         {text}
       </div>
@@ -61,7 +55,7 @@ const HonestDecoder = (props) => {
   );
 };
 
-export const styles = {
+const styles = stylex.create({
   singleColumnDiv: {
     gap: "1rem",
     textAlign: "left",
@@ -85,7 +79,7 @@ export const styles = {
     margin: 0,
     marginBottom: "1rem",
     fontWeight: "400",
-    color: "var(--color-navy)",
+    color: tokens["--color-navy"],
   },
   h6: {
     fontSize: "18px",
@@ -103,12 +97,12 @@ export const styles = {
     fontWeight: "100",
     marginBottom: "1rem",
     lineHeight: "1.6rem",
-    color: "var(--color-secondary)",
+    color: tokens["--color-secondary"],
   },
   btnToggle: {
-    border: 0,
+    borderWidth: 0,
     backgroundColor: "transparent",
-    color: "var(--color-navy)",
+    color: tokens["--color-navy"],
     fontSize: "18px",
     textDecoration: "underline",
     alignSelf: "center",
@@ -116,7 +110,7 @@ export const styles = {
     fontWeight: "400",
     margin: "0.5rem 0 1rem 0",
   },
-  textDisplay: {
+  textDisplay: (heightCurrent, isExpanded) => ({
     fontSize: "18px",
     textAlign: "left",
     padding: "0",
@@ -126,7 +120,12 @@ export const styles = {
     lineHeight: "1.6rem",
     overflow: "hidden",
     transition: "height 0.5s ease-in-out",
-  },
-};
+    height: `${heightCurrent}px`,
+    animation: isExpanded ? "mask-expanding 0.5s" : "mask-collapsing 0.5s",
+    maskImage: isExpanded
+      ? "linear-gradient(black 100%, transparent)"
+      : "linear-gradient(black 50%, transparent)",
+  }),
+});
 
 export default HonestDecoder;

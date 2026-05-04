@@ -6,6 +6,8 @@ import Skill from "../components/Skill.jsx";
 import { mapStateToCurrentScore } from "../utils/map-state-to-current-score";
 import { formatArrayToTargetObject } from "../utils/format-array-to-target-object";
 import ProgressBar from "../components/ProgressBar.jsx";
+import * as stylex from "@stylexjs/stylex";
+import { tokens } from "../tokens.stylex";
 
 function Result(props) {
   const [currentScoreTracker, setCurrentScoreTracker] = useState(
@@ -29,8 +31,6 @@ function Result(props) {
         } else if (entry.intersectionRatio <= 0.1) {
           setIsVisible(false);
         }
-
-        console.log(entry.intersectionRatio);
       },
       { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] },
     );
@@ -52,7 +52,7 @@ function Result(props) {
         enableRestart
         enableShare
       />
-      <div style={styles.container}>
+      <div {...stylex.props(styles.container)}>
         <HonestDecoder llmResult={props.llmResult} />
         <Score currentScore={currentScore} totalScore={totalScore} />
 
@@ -72,18 +72,10 @@ function Result(props) {
           })}
         </div>
         {isVisible && (
-          <div style={styles.floatingProgress}>
-            <p style={styles.p}>Readiness</p>
+          <div {...stylex.props(styles.floatingProgress)}>
+            <p {...stylex.props(styles.p)}>Readiness</p>
             <ProgressBar completed={percentage} />
-            <p
-              style={{
-                ...styles.p,
-                color: "var(--color-navy)",
-                fontWeight: "600",
-              }}
-            >
-              {percentage}%
-            </p>
+            <p {...stylex.props(styles.p)}>{percentage}%</p>
           </div>
         )}
       </div>
@@ -91,7 +83,7 @@ function Result(props) {
   );
 }
 
-const styles = {
+const styles = stylex.create({
   container: {
     display: "flex",
     flexDirection: "column",
@@ -107,19 +99,20 @@ const styles = {
     width: "78%",
     height: "fit-content",
     padding: "0.4rem 1rem 0.4rem 1rem",
-    border: "none",
+    borderWidth: 0,
     borderRadius: "25px",
-    background: "rgba(255, 255, 255, 0.9)",
+    backgroundColor: "rgba(255, 255, 255, 0.94)",
     top: "30px",
     zIndex: "999",
     boxShadow: "0 0 20px 5px rgba(0, 0, 0, 0.1)",
   },
   p: {
-    fontWeight: "400",
     fontSize: "18px",
     margin: 0,
     padding: 0,
+    color: tokens["--color-navy"],
+    fontWeight: "600",
   },
-};
+});
 
 export default Result;
