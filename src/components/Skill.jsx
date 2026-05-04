@@ -139,7 +139,9 @@ const styles = stylex.create({
   container: {
     marginBottom: 28,
     width: "100%",
-    border: `1px solid ${tokens["--color-third"]}`,
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: tokens["--color-third"],
     borderRadius: 15,
   },
   topSection: (statusIndex) => ({
@@ -151,7 +153,7 @@ const styles = stylex.create({
     borderTopLeftRadius: 14,
     borderTopRightRadius: 14,
     borderBottom: `1px solid ${tokens["--color-third"]}`,
-    backgroundColor: skillStatuses[statusIndex].background,
+    backgroundColor: skillStatuses[statusIndex].backgroundColor,
   }),
   section: (isChecked) => ({
     display: "flex",
@@ -170,8 +172,9 @@ const styles = stylex.create({
     height: "1.6rem",
     padding: "0.8rem",
     textAlign: "left",
-    border: `1px solid ${tokens["--color-fourth"]}`,
-    backgroundColor: tokens["--color-fourth"],
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: tokens["--color-fourth"],
     borderRadius: "50px",
   },
   checked: {
@@ -189,8 +192,8 @@ const styles = stylex.create({
     marginBottom: "0.5rem",
     marginRight: "0.3rem",
     position: "relative",
-    background: "transparent",
-    border: "0",
+    backgroundColor: "transparent",
+    borderWidth: 0,
     textDecoration: isChecked
       ? `line-through ${tokens["--color-third"]}`
       : undefined,
@@ -206,8 +209,6 @@ const styles = stylex.create({
   }),
   h6: {
     fontSize: "18px",
-    paddingBottom: "0.7rem",
-    marginBottom: "0.2rem",
     textAlign: "left",
     fontWeight: "400",
     padding: 0,
@@ -219,14 +220,14 @@ const styles = stylex.create({
     textAlign: "left",
   },
   statusIndex: {
-    border: 0,
-    background: "transparent",
+    borderWidth: 0,
+    backgroundColor: "transparent",
     fontSize: "18px",
     paddingRight: "1rem",
   },
   button: {
-    border: 0,
-    background: "transparent",
+    borderWidth: 0,
+    backgroundColor: "transparent",
   },
 });
 

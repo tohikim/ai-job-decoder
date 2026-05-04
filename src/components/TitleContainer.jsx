@@ -35,7 +35,9 @@ const styles = stylex.create({
     gap: "10px",
   },
   text: {
-    border: `1px solid ${tokens["--color-third"]}`,
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: tokens["--color-third"],
     borderRadius: "50px",
     color: tokens["--color-secondary"],
     width: "fit-content",

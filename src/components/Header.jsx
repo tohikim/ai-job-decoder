@@ -48,7 +48,7 @@ const styles = stylex.create({
   },
   button: {
     backgroundColor: "transparent",
-    borderWidth: "0",
+    borderWidth: 0,
     alignItems: "right",
   },
   iconContainer: { alignItems: "right" },

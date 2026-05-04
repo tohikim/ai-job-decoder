@@ -100,7 +100,7 @@ const styles = stylex.create({
     color: tokens["--color-secondary"],
   },
   btnToggle: {
-    border: 0,
+    borderWidth: 0,
     backgroundColor: "transparent",
     color: tokens["--color-navy"],
     fontSize: "18px",
@@ -109,7 +109,6 @@ const styles = stylex.create({
     padding: 0,
     fontWeight: "400",
     margin: "0.5rem 0 1rem 0",
-    borderWidth: 0,
   },
   textDisplay: (heightCurrent, isExpanded) => ({
     fontSize: "18px",

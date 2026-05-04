@@ -67,7 +67,7 @@ const styles = stylex.create({
     marginRight: "1.25rem",
   },
   textarea: {
-    border: "0",
+    borderWidth: 0,
     borderRadius: "25px",
     color: tokens["--color-primary"],
     padding: "1.5rem",
@@ -78,7 +78,7 @@ const styles = stylex.create({
   },
   button: {
     borderRadius: "50px",
-    border: 0,
+    borderWidth: 0,
     backgroundColor: tokens["--color-navy"],
     paddingTop: "0.2rem",
     height: "45px",
