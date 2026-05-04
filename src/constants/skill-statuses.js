@@ -1,10 +1,12 @@
+import { tokens } from "../tokens.stylex";
+
 export const skillStatuses = [
   {
     label: "Click to set",
     background: "transparent",
     progress: undefined,
-    color: "var(--color-primary)",
-    borderColor: "var(--color-third)",
+    color: tokens["--color-primary"],
+    borderColor: tokens["--color-third"],
   },
   {
     label: "I know this",

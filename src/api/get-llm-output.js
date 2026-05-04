@@ -8,7 +8,7 @@ export const getLlmOutput = async (jobDescription) => {
     import.meta.env.VITE_ENVIRONMENT !== "production" &&
     jobDescription.length < MINIMUM_JOB_DESCRIPTION_CHARACTERS
   ) {
-    await delay(2000);
+    await delay(750);
 
     return mockResult;
   }

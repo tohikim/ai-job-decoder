@@ -1,7 +1,8 @@
-import * as stylex from "@stylexjs/unplugin";
+import * as stylex from "@stylexjs/stylex";
 import { getLlmOutput } from "../api/get-llm-output";
 import arrow from "../assets/arrow.png";
 import { MINIMUM_JOB_DESCRIPTION_CHARACTERS } from "../constants/job-description";
+import { tokens } from "../tokens.stylex";
 
 const InputContainer = (props) => {
   const onSubmit = async (e) => {
@@ -36,21 +37,21 @@ const InputContainer = (props) => {
   };
 
   return (
-    <div {...props.stylex(styles.container)}>
+    <div {...stylex.props(styles.container)}>
       <form onSubmit={onSubmit}>
         <textarea
           placeholder="Paste job description here."
           value={props.jobDescription}
           rows={1}
-          {...props.stylex(styles.textarea)}
+          {...stylex.props(styles.textarea)}
           onChange={(e) => props.setJobDescription(e.target.value)}
         />
         <button
           type={"submit"}
           variant="contained"
-          {...props.stylex(styles.button)}
+          {...stylex.props(styles.button)}
         >
-          <img alt="arrow" src={arrow} {...props.stylex(styles.arrow)} />
+          <img alt="arrow" src={arrow} {...stylex.props(styles.arrow)} />
         </button>
       </form>
     </div>
@@ -59,7 +60,7 @@ const InputContainer = (props) => {
 
 const styles = stylex.create({
   container: {
-    boxShadow: "0 0 20px var(--color-third), 0 0 40px var(--color-third)",
+    boxShadow: `0 0 20px ${tokens["--color-third"]}, 0 0 40px ${tokens["--color-third"]}`,
     borderRadius: "25px",
     marginBottom: "1rem",
     marginLeft: "1.25rem",
@@ -68,7 +69,7 @@ const styles = stylex.create({
   textarea: {
     border: "0",
     borderRadius: "25px",
-    color: "var(--color-primary)",
+    color: tokens["--color-primary"],
     padding: "1.5rem",
     fontSize: "18px",
     fontWeight: "100",
@@ -78,7 +79,7 @@ const styles = stylex.create({
   button: {
     borderRadius: "50px",
     border: 0,
-    backgroundColor: "var(--color-navy)",
+    backgroundColor: tokens["--color-navy"],
     paddingTop: "0.2rem",
     height: "45px",
     width: "45px",

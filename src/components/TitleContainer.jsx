@@ -1,12 +1,13 @@
-import * as stylex from "@stylexjs/unplugin";
+import * as stylex from "@stylexjs/stylex";
+import { tokens } from "../tokens.stylex";
 
 const TitleContainer = () => {
   return (
-    <div {...props.stylex(styles.container)}>
-      <h4 {...props.stylex(styles.title)}>Kill your impostor syndrome</h4>
-      <div {...props.stylex(styles.tag)}>
-        <p {...props.stylex(styles.text)}>Honest job decoder</p>
-        <p {...props.stylex(styles.text)}>Skill assessment</p>
+    <div {...stylex.props(styles.container)}>
+      <h4 {...stylex.props(styles.title)}>Kill your impostor syndrome</h4>
+      <div {...stylex.props(styles.tag)}>
+        <p {...stylex.props(styles.text)}>Honest job decoder</p>
+        <p {...stylex.props(styles.text)}>Skill assessment</p>
       </div>
     </div>
   );
@@ -26,7 +27,7 @@ const styles = stylex.create({
     fontWeight: "500",
     margin: "0",
     padding: "0",
-    color: "var(--color-navy)",
+    color: tokens["--color-navy"],
   },
   tag: {
     display: "flex",
@@ -34,9 +35,9 @@ const styles = stylex.create({
     gap: "10px",
   },
   text: {
-    border: "1px solid var(--color-third)",
+    border: `1px solid ${tokens["--color-third"]}`,
     borderRadius: "50px",
-    color: "var(--color-secondary)",
+    color: tokens["--color-secondary"],
     width: "fit-content",
     height: "fit-content",
     fontSize: "16px",

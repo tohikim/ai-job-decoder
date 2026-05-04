@@ -1,4 +1,4 @@
-import * as stylex from "@stylexjs/unplugin";
+import * as stylex from "@stylexjs/stylex";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
@@ -21,8 +21,8 @@ const Score = (props) => {
   }
 
   return (
-    <div {...props.stylex(styles.container)}>
-      <div {...props.stylex(styles.doughnutContainer)}>
+    <div {...stylex.props(styles.container)}>
+      <div {...stylex.props(styles.doughnutContainer)}>
         <Doughnut
           data={{
             datasets: [
@@ -74,9 +74,9 @@ const Score = (props) => {
           }}
         />
       </div>
-      <div {...props.stylex(styles.textContainer)}>
-        <h6 {...props.stylex(styles.h6)}>Your Readiness Score</h6>
-        <p {...props.stylex(styles.p)}>
+      <div {...stylex.props(styles.textContainer)}>
+        <h6 {...stylex.props(styles.h6)}>Your Readiness Score</h6>
+        <p {...stylex.props(styles.p)}>
           Improve your job readiness score by assessing your technical skills 👇
         </p>
       </div>
@@ -88,7 +88,6 @@ const GRAPH_WIDTH_IN_VIEW_WIDTH = 70;
 
 const styles = stylex.create({
   container: {
-    // border: "1px solid var(--color-third)",
     borderRadius: "15px",
     marginBottom: "1rem",
     padding: "1rem",

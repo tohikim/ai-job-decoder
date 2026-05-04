@@ -1,5 +1,5 @@
-import stylex from "@stylexjs/unplugin";
-import * as shareicon from "../assets/share.png";
+import * as stylex from "@stylexjs/stylex";
+import shareicon from "../assets/share.png";
 
 const Sharebutton = () => {
   const handleShare = async () => {
@@ -33,8 +33,8 @@ const Sharebutton = () => {
   };
 
   return (
-    <button onClick={handleShare} {...props.stylex(styles.button)}>
-      <img src={shareicon} {...props.stylex(styles.icon)} />
+    <button onClick={handleShare} {...stylex.props(styles.button)}>
+      <img src={shareicon} {...stylex.props(styles.icon)} />
     </button>
   );
 };
@@ -45,7 +45,12 @@ const styles = stylex.create({
     borderWidth: "0",
     alignItems: "right",
   },
-  icon: { height: 70, width: 70, margin: 0, padding: 0 },
+  icon: {
+    height: 70,
+    width: 70,
+    margin: 0,
+    padding: 0,
+  },
 });
 
 export default Sharebutton;

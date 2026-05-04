@@ -1,11 +1,12 @@
-import * as stylex from "@stylexjs/unplugin";
+import * as stylex from "@stylexjs/stylex";
 import infomark from "../assets/info-mark.png";
+import { tokens } from "../tokens.stylex";
 
 const InfoContainer = () => {
   return (
-    <div {...props.stylex(styles.container)}>
-      <img alt="info mark" src={infomark} {...props.stylex(styles.icon)} />
-      <p {...props.stylex(styles.text)}>
+    <div {...stylex.props(styles.container)}>
+      <img alt="info mark" src={infomark} {...stylex.props(styles.icon)} />
+      <p {...stylex.props(styles.text)}>
         We translate complex JDs into simple skill checklists so you can apply
         with confidence.
       </p>
@@ -17,8 +18,8 @@ const styles = stylex.create({
   container: {
     display: "flex",
     flexDirection: "row",
-    color: "var(--color-secondary)",
-    backgroundColor: "var(--color-background)",
+    color: tokens["--color-secondary"],
+    backgroundColor: tokens["--color-background"],
     borderRadius: "15px",
     padding: "1rem 1.5rem",
     margin: "2rem 3.35rem 2.5rem 3.35rem",
