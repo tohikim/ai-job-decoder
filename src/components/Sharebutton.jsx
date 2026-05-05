@@ -5,7 +5,7 @@ const Sharebutton = () => {
   const handleShare = async () => {
     const shareData = {
       title: "Imposter Syndrome Killer",
-      text: `Turns out I’m actually a great fit for this role. Checked the requirements with the Imposter Syndrome Killer.`,
+      text: `Check out this site, you can decode complex job descriptions into plain English.`,
       url: window.location.href,
     };
 
