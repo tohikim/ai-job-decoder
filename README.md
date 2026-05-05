@@ -1,16 +1,48 @@
-# React + Vite
+# 🚀 Imposter Syndrome Killer (ISK 1.0)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Imposter Syndrome Killer** is a minimalist, logic-driven React application designed to strip away the intimidation of job hunting. By deconstructing complex job descriptions (JDs) into manageable technical checklists, it provides a data-backed confidence boost for applicants.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Try it Live
 
-## React Compiler
+This project is deployed and ready for immediate use. You do not need to install anything locally to test the features:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+👉 **[Live Demo on Vercel](https://imposter-syndrome-killer.vercel.app/)**
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features & Logic
+
+- **Honest Job Decoder:** Translates jargon-heavy JDs into a concise, one-paragraph summary.
+- **Dynamic Readiness Score:** A visual gauge (Doughnut Chart) that tracks readiness in real-time.
+- **Three-Tier Skill Assessment:** Uses a custom "Click to set" logic:
+  - **I know this:** 1.0 point
+  - **Learning:** 0.5 points
+  - **No clue:** 0 points
+- **Integrated Learning Path:** Each action item links directly to a YouTube search result for the specific task.
+- **Native Sharing:** Share your readiness status via the Web Share API.
+- **Privacy-First:** Every session is a fresh start—no data persisted, no sign-up required.
+
+---
+
+## 🛠️ Technical Implementation
+
+### **Core Stack**
+
+- **Frontend:** React (Vite)
+- **Styling:** `@stylexjs/stylex` for type-safe, maintainable CSS-in-JS.
+- **Visuals:** `Chart.js` for the dynamic readiness gauge.
+- **Interactivity:** Intersection Observer API for scroll-based triggers.
+
+---
+
+### **Project Structure Highlights**
+
+- **`Skill.jsx`**: Manages the "Click to set" state and score mapping.
+- **`HonestDecoder.jsx`**: Handles smooth height transitions for JD summaries.
+- **`Sharebutton.jsx`**: Implements native sharing with a clipboard fallback.
+
+---
+
+Developed by **Tohi Kim**
