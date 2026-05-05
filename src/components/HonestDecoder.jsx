@@ -59,7 +59,10 @@ const styles = stylex.create({
   singleColumnDiv: {
     gap: "1rem",
     textAlign: "left",
-    width: "100%",
+    width: {
+      "@media (max-width: 800px)": "100%",
+      "@media (min-width: 801px)": "80%",
+    },
     minHeight: "100px",
     padding: "4px",
     marginBottom: "1rem",
@@ -72,7 +75,10 @@ const styles = stylex.create({
     verticalAlign: "center",
   },
   h4: {
-    fontSize: "24px",
+    fontSize: {
+      "@media (max-width: 800px)": "24px",
+      "@media (min-width: 801px)": "34px",
+    },
     paddingBottom: "0.7rem",
     textAlign: "left",
     padding: 0,

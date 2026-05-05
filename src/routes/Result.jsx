@@ -26,9 +26,11 @@ function Result(props) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         // const entry = entries[0];
-        if (entry.intersectionRatio > 0.1) {
+        const triggerThreshold = 0.1;
+
+        if (entry.intersectionRatio > triggerThreshold) {
           setIsVisible(true);
-        } else if (entry.intersectionRatio <= 0.1) {
+        } else if (entry.intersectionRatio <= triggerThreshold) {
           setIsVisible(false);
         }
       },
@@ -52,51 +54,100 @@ function Result(props) {
         enableRestart
         enableShare
       />
-      <div {...stylex.props(styles.container)}>
-        <HonestDecoder llmResult={props.llmResult} />
-        <Score currentScore={currentScore} totalScore={totalScore} />
-
-        <div ref={myRef}>
-          {props.llmResult.skills.map((skill, index) => {
-            return (
-              <Skill
-                key={index}
-                skill={skill}
-                updateSkillScore={(score) => {
-                  setCurrentScoreTracker((prev) => {
-                    return { ...prev, [skill.label]: score };
-                  });
-                }}
-              />
-            );
-          })}
+      <div {...stylex.props(styles.containerWhole)}>
+        <div {...stylex.props(styles.container)}>
+          <HonestDecoder llmResult={props.llmResult} />
+          <Score currentScore={currentScore} totalScore={totalScore} />
         </div>
-        {isVisible && (
-          <div {...stylex.props(styles.floatingProgress)}>
-            <p {...stylex.props(styles.p)}>Readiness</p>
-            <ProgressBar completed={percentage} />
-            <p {...stylex.props(styles.p)}>{percentage}%</p>
+        <div ref={myRef} {...stylex.props(styles.skillContainer)}>
+          <div>
+            <p {...stylex.props(styles.skillDescription)}>
+              {" "}
+              Improve your job readiness score by assessing your technical
+              skills 👇
+            </p>
+            {props.llmResult.skills.map((skill, index) => {
+              return (
+                <Skill
+                  key={index}
+                  skill={skill}
+                  updateSkillScore={(score) => {
+                    setCurrentScoreTracker((prev) => {
+                      return { ...prev, [skill.label]: score };
+                    });
+                  }}
+                />
+              );
+            })}
           </div>
-        )}
+          {isVisible && (
+            <div {...stylex.props(styles.floatingProgress)}>
+              <p {...stylex.props(styles.p)}>Readiness</p>
+              <ProgressBar completed={percentage} />
+              <p {...stylex.props(styles.p)}>{percentage}%</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
 }
 
 const styles = stylex.create({
+  containerWhole: {
+    display: {
+      "@media (max-width: 800px)": null,
+      "@media (min-width: 801px)": "flex",
+    },
+    flexDirection: {
+      "@media (max-width: 800px)": null,
+      "@media (min-width: 801px)": "row",
+    },
+  },
   container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: {
+      "@media (max-width: 800px)": "center",
+      "@media (min-width: 801px)": "left",
+    },
+    padding: "2rem 2rem 0 2rem",
+    width: {
+      "@media (max-width: 800px)": null,
+      "@media (min-width: 801px)": "60dvw",
+    },
+    marginLeft: {
+      "@media (max-width: 800px)": null,
+      "@media (min-width: 801px)": "3rem",
+    },
+  },
+  skillContainer: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     padding: "2rem",
+    width: {
+      "@media (max-width: 800px)": null,
+      "@media (min-width: 801px)": "40dvw",
+    },
+    marginRight: {
+      "@media (max-width: 800px)": null,
+      "@media (min-width: 801px)": "3rem",
+    },
   },
   floatingProgress: {
-    display: "flex",
+    display: {
+      "@media (max-width: 800px)": "flex",
+      "@media (min-width: 801px)": "none",
+    },
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     position: "fixed",
-    width: "78%",
+    width: {
+      "@media (max-width: 800px)": "78%",
+      "@media (min-width: 801px)": "30%",
+    },
     height: "fit-content",
     padding: "0.4rem 1rem 0.4rem 1rem",
     borderWidth: 0,
@@ -112,6 +163,20 @@ const styles = stylex.create({
     padding: 0,
     color: tokens["--color-navy"],
     fontWeight: "600",
+  },
+  skillDescription: {
+    display: {
+      "@media (max-width: 800px)": "none",
+      "@media (min-width: 801px)": "block",
+    },
+    fontSize: "18px",
+    textAlign: "left",
+    width: "40dvw",
+    padding: "1rem",
+    margin: "0",
+    fontWeight: "100",
+    marginBottom: "1rem",
+    lineHeight: "1.6rem",
   },
 });
 
