@@ -69,7 +69,7 @@ const Score = (props) => {
               },
             },
           }}
-          style={{
+          styles={{
             width: `${GRAPH_WIDTH_IN_VIEW_WIDTH}vw`,
           }}
         />
@@ -91,6 +91,10 @@ const styles = stylex.create({
     borderRadius: "15px",
     marginBottom: "1rem",
     padding: "1rem",
+    width: {
+      "@media (max-width: 800px)": null,
+      "@media (min-width: 801px)": "80%",
+    },
   },
   doughnutContainer: {
     position: "relative",
@@ -108,6 +112,10 @@ const styles = stylex.create({
     textAlign: "center",
   },
   p: {
+    display: {
+      "@media (max-width: 800px)": "block",
+      "@media (min-width: 801px)": "none",
+    },
     fontSize: "18px",
     textAlign: "center",
     width: "100%",

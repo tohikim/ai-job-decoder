@@ -25,11 +25,25 @@ const styles = stylex.create({
     margin: "2rem 3.35rem 2.5rem 3.35rem",
     gap: "10px",
     alignSelf: "center",
+    width: {
+      default: null,
+      "@media (max-width: 800px)": null,
+      "@media (min-width: 801px)": "30dvw",
+    },
   },
   icon: {
-    height: "21px",
-    width: "21px",
-    paddingTop: "5px",
+    height: {
+      "@media (max-width: 800px)": "21px",
+      "@media (min-width: 801px)": "17px",
+    },
+    width: {
+      "@media (max-width: 800px)": "21px",
+      "@media (min-width: 801px)": "17px",
+    },
+    paddingTop: {
+      "@media (max-width: 800px)": "5px",
+      "@media (min-width: 801px)": "3px",
+    },
     opacity: "50%",
   },
   text: {

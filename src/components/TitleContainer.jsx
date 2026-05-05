@@ -19,8 +19,12 @@ const styles = stylex.create({
     flexDirection: "column",
     alignItems: "center",
     gap: "20px",
-    paddingTop: "4rem",
+    paddingTop: "5rem",
     paddingBotton: "2rem",
+    marginBottom: {
+      "@media (max-width:800px)": "0",
+      "@media (min-width: 801px)": "3rem",
+    },
   },
   title: {
     fontSize: "1.4rem",

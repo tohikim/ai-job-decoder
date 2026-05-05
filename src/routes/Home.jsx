@@ -33,7 +33,9 @@ function Home(props) {
         <div {...stylex.props(styles.content)}>
           <TitleContainer />
           <div {...stylex.props(styles.section)}>
-            <InfoContainer />
+            <div {...stylex.props(styles.InfoContainer)}>
+              <InfoContainer />
+            </div>
             <InputContainer
               setRoute={props.setRoute}
               jobDescription={props.jobDescription}
@@ -42,6 +44,9 @@ function Home(props) {
               loading={loading}
               setLoading={setLoading}
             />
+            <div {...stylex.props(styles.InfoContainer2)}>
+              <InfoContainer />
+            </div>
           </div>
         </div>
       )}
@@ -53,24 +58,44 @@ const styles = stylex.create({
   content: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: {
+      "@media (max-width: 800px)": "space-between",
+      "@media (min-width: 801px)": "center",
+    },
     height: "86dvh",
   },
   section: {
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
   },
   loading: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    height: "65vh",
+    height: "70vh",
   },
   p: {
     fontSize: "18px",
     fontWeight: "100",
     paddingTop: "1rem",
+  },
+  InfoContainer: {
+    display: {
+      "@media (max-width: 800px)": "flex",
+      "@media (min-width: 801px)": "none",
+    },
+  },
+  InfoContainer2: {
+    display: {
+      "@media (max-width: 800px)": "none",
+      "@media (min-width: 801px)": "flex",
+    },
+    marginTop: {
+      "@media (max-width: 800px)": "none",
+      "@media (min-width: 801px)": "3rem",
+    },
   },
 });
 

@@ -42,7 +42,7 @@ const InputContainer = (props) => {
         <textarea
           placeholder="Paste job description here."
           value={props.jobDescription}
-          rows={1}
+          rows={1.5}
           {...stylex.props(styles.textarea)}
           onChange={(e) => props.setJobDescription(e.target.value)}
         />
@@ -65,6 +65,10 @@ const styles = stylex.create({
     marginBottom: "1rem",
     marginLeft: "1.25rem",
     marginRight: "1.25rem",
+    width: {
+      "@media (max-width: 800px)": "90%",
+      "@media (min-width: 801px)": "60dvw",
+    },
   },
   textarea: {
     borderWidth: 0,
@@ -84,7 +88,6 @@ const styles = stylex.create({
     height: "45px",
     width: "45px",
     margin: "1rem",
-    marginTop: "0.4rem",
     float: "right",
   },
   arrow: {
