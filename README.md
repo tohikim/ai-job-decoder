@@ -1,6 +1,6 @@
-# 🚀 Imposter Syndrome Killer (ISK 1.0)
+# 💀 Imposter Syndrome Killer
 
-**Imposter Syndrome Killer** is a minimalist, logic-driven React application designed to strip away the intimidation of job hunting. By deconstructing complex job descriptions (JDs) into manageable technical checklists, it provides a data-backed confidence boost for applicants.
+A minimalist, logic-driven React application designed to strip away the intimidation of job hunting. By deconstructing complex job descriptions (JDs) into manageable technical checklists, it provides a data-backed confidence boost for applicants.
 
 <h2> 🌐 Try it Live </h2>
 
@@ -8,7 +8,7 @@ This project is deployed and ready for immediate use. You do not need to install
 
 👉 **[Live Demo on Vercel](https://imposter-syndrome-killer.vercel.app/)**
 
-<h2>✨ Features & Logic</h2>
+<h2>🌟 Features </h2>
 
 - **Honest Job Decoder:** Translates jargon-heavy JDs into a concise, one-paragraph summary.
 - **Dynamic Readiness Score:** A visual gauge (Doughnut Chart) that tracks readiness in real-time.
@@ -20,23 +20,14 @@ This project is deployed and ready for immediate use. You do not need to install
 - **Native Sharing:** Share your readiness status via the Web Share API.
 - **Privacy-First:** Every session is a fresh start—no data persisted, no sign-up required.
 
-<h2>🛠️ Technical Implementation</h2>
-
-### **Core Stack**
+<h2>🛠️ Tech Stack</h2>
 
 - **Frontend:** React (Vite)
 - **Styling:** `@stylexjs/stylex` for type-safe, maintainable CSS-in-JS.
 - **Visuals:** `Chart.js` for the dynamic readiness gauge.
 - **Interactivity:** Intersection Observer API for scroll-based triggers.
 
-
-### **Project Structure Highlights**
-
-- **`Skill.jsx`**: Manages the "Click to set" state and score mapping.
-- **`HonestDecoder.jsx`**: Handles smooth height transitions for JD summaries.
-- **`Sharebutton.jsx`**: Implements native sharing with a clipboard fallback.
-
-<h2>📦 Installation & Setup</h2> 
+<h2>🚀 Installation & Setup</h2> 
 
 To get this project running locally, follow these steps:
 
@@ -61,6 +52,11 @@ To get this project running locally, follow these steps:
    npm run dev
    ```
 
+<h2>🏗️Project Structure</h2>
+
+- **`Skill.jsx`**: Manages the "Click to set" state and score mapping.
+- **`HonestDecoder.jsx`**: Handles smooth height transitions for JD summaries.
+- **`Sharebutton.jsx`**: Implements native sharing with a clipboard fallback.
 
 ---
 
