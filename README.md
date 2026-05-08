@@ -2,6 +2,9 @@
 
 A minimalist, logic-driven React application designed to strip away the intimidation of job hunting. By deconstructing complex job descriptions (JDs) into manageable technical checklists, it provides a data-backed confidence boost for applicants.
 
+<img width="574" height="357" alt="ISK output" src="https://github.com/user-attachments/assets/58ac0ee8-9782-4ec5-bf29-202bd7e72522" />
+
+
 <h2> 🌐 Try it Live </h2>
 
 This project is deployed and ready for immediate use. You do not need to install anything locally to test the features:
