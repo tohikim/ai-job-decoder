@@ -41,25 +41,25 @@ This project is deployed and ready for immediate use. You do not need to install
 To get this project running locally, follow these steps:
 
 1. **Clone the repository:**
-```bash
-git clone https://github.com/tohikim/imposter-syndrome-killer
-cd imposter-syndrome-killer
-```
+   ```bash
+   git clone https://github.com/tohikim/imposter-syndrome-killer
+   cd imposter-syndrome-killer
+   ```
    
 2. **Install core dependencies:**
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
    
 3. **Install StyleX & Chart.js:**
-```bash
-npm install @stylexjs/stylex chart.js react-chartjs-2
-```
+   ```bash
+   npm install @stylexjs/stylex chart.js react-chartjs-2
+   ```
 
 4. **Start the development server:**
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
 
 
 ---
