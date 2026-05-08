@@ -66,6 +66,7 @@ If you want to run the project locally for development or customization, follow 
    npm run dev
 
 <br>
+
 ---
 
 Developed by **Tohi Kim**
