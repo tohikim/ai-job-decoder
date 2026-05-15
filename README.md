@@ -1,17 +1,17 @@
-# 💀 Imposter Syndrome Killer
+# Imposter Syndrome Killer
 
 A minimalist, logic-driven React application designed to strip away the intimidation of job hunting. By deconstructing complex job descriptions (JDs) into manageable technical checklists, it provides a data-backed confidence boost for applicants.
 
 <img width="574" height="357" alt="ISK output" src="https://github.com/user-attachments/assets/58ac0ee8-9782-4ec5-bf29-202bd7e72522" />
 
 
-<h2> 🌐 Try it Live </h2>
+<h2> Try it Live </h2>
 
 This project is deployed and ready for immediate use. You do not need to install anything locally to test the features:
 
 👉 **[Live Demo on Vercel](https://imposter-syndrome-killer.vercel.app/)**
 
-<h2>🌟 Features </h2>
+<h2>Features </h2>
 
 - **Honest Job Decoder:** Translates jargon-heavy JDs into a concise, one-paragraph summary.
 - **Dynamic Readiness Score:** A visual gauge (Doughnut Chart) that tracks readiness in real-time.
@@ -30,7 +30,7 @@ This project is deployed and ready for immediate use. You do not need to install
 - **Visuals:** `Chart.js` for the dynamic readiness gauge.
 - **Interactivity:** Intersection Observer API for scroll-based triggers.
 
-<h2>🚀 Installation & Setup</h2> 
+<h2>Installation & Setup</h2> 
 
 To get this project running locally, follow these steps:
 
@@ -55,7 +55,7 @@ To get this project running locally, follow these steps:
    npm run dev
    ```
 
-<h2>🏗️Project Structure</h2>
+<h2>Project Structure</h2>
 
 - **`Skill.jsx`**: Manages the "Click to set" state and score mapping.
 - **`HonestDecoder.jsx`**: Handles smooth height transitions for JD summaries.
