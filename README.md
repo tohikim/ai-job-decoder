@@ -8,8 +8,7 @@ A minimalist, logic-driven React application designed to strip away the intimida
 <h2> Try it Live </h2>
 
 This project is deployed and ready for immediate use. You do not need to install anything locally to test the features:
-
-👉 **[Live Demo on Vercel](https://imposter-syndrome-killer.vercel.app/)**
+ **[Live Demo on Vercel](https://imposter-syndrome-killer.vercel.app/)**
 
 <h2>Features </h2>
 
@@ -23,7 +22,7 @@ This project is deployed and ready for immediate use. You do not need to install
 - **Native Sharing:** Share your readiness status via the Web Share API.
 - **Privacy-First:** Every session is a fresh start—no data persisted, no sign-up required.
 
-<h2>🛠️ Tech Stack</h2>
+<h2>Tech Stack</h2>
 
 - **Frontend:** React (Vite)
 - **Styling:** `@stylexjs/stylex` for type-safe, maintainable CSS-in-JS.
