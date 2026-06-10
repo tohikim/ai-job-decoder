@@ -63,8 +63,7 @@ function Result(props) {
           <div>
             <p {...stylex.props(styles.skillDescription)}>
               {" "}
-              Improve your job readiness score by assessing your technical
-              skills 👇
+              Assess your technical skills and improve your job readiness score.
             </p>
             {props.llmResult.skills.map((skill, index) => {
               return (

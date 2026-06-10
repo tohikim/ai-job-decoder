@@ -4,7 +4,7 @@ import { tokens } from "../tokens.stylex";
 const TitleContainer = () => {
   return (
     <div {...stylex.props(styles.container)}>
-      <h4 {...stylex.props(styles.title)}>Kill your impostor syndrome</h4>
+      <h4 {...stylex.props(styles.title)}>Apply With Confidence</h4>
       <div {...stylex.props(styles.tag)}>
         <p {...stylex.props(styles.text)}>Honest job decoder</p>
         <p {...stylex.props(styles.text)}>Skill assessment</p>
