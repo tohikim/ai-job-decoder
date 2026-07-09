@@ -16,7 +16,7 @@ export const getLlmOutput = async (jobDescription) => {
   const response = await axios.post(
     "https://openrouter.ai/api/v1/chat/completions",
     {
-      model: "openrouter/free",
+      model: "openai/gpt-oss-120b:free",
       temperature: 0.5,
       max_tokens: 8192,
       messages: [
