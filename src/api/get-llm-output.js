@@ -76,7 +76,7 @@ export const getLlmOutput = async (jobDescription) => {
     },
     {
       headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
+        Authorization: `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
       },
     },
